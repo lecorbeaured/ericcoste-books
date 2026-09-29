@@ -40,7 +40,7 @@
   </section>
 
   <a href="best-ai-books.html" class="article-index-link">
-    <h3>Best AI Books (2026 Reading List)</h3>
+    <h3>Best AI Books (<span id="list-yr"></span> Reading List)</h3>
     <p>The flagship roundup: the AI books worth your time this year, across categories.</p>
   </a>
   <a href="best-ai-books-for-beginners.html" class="article-index-link">
@@ -66,6 +66,10 @@
     <p>&copy; <span id="yr"></span> Eric Coste. All rights reserved.</p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  var __yr = new Date().getFullYear();
+  document.getElementById('yr').textContent = __yr;
+  document.getElementById('list-yr').textContent = __yr;
+</script>
 </body>
 </html>

@@ -54,7 +54,7 @@
 
 <main class="wrap">
   <section class="hero">
-    <span class="eyebrow">Reading List &middot; Updated 2026</span>
+    <span class="eyebrow">Reading List &middot; Updated <span id="upd-yr"></span></span>
     <h1>Best AI Books</h1>
     <p class="lede">Eleven books, sorted from "understand what's happening" to "put it to work." No padding, no books included just to hit a round number.</p>
   </section>
@@ -200,6 +200,10 @@
     <p>&copy; <span id="yr"></span> Eric Coste. All rights reserved.</p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  var __yr = new Date().getFullYear();
+  document.getElementById('yr').textContent = __yr;
+  document.getElementById('upd-yr').textContent = __yr;
+</script>
 </body>
 </html>
