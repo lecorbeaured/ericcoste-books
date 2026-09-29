@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Eric Coste Book Is Right for You</title>
+<meta name="description" content="Not sure whether to start with The Hidden Laws of Money or AI Is Making People Money? Answer two quick questions to find out.">
+<link rel="canonical" href="https://booksbyericcoste.com/which-book.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .q { display: none; }
+  .q.active { display: block; }
+  .choice {
+    display: block; width: 100%; text-align: left;
+    font-family: 'Libre Baskerville', serif; font-size: 1rem;
+    padding: 16px 18px; margin-bottom: 12px;
+    border: 1.5px solid var(--rule); border-radius: 10px;
+    background: var(--paper-elev); color: var(--ink);
+    cursor: pointer;
+  }
+  .choice:hover { border-color: var(--gold); }
+  #result { display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap row">
+    <a href="index.html" class="brand"><span class="monogram">EC</span> Eric Coste</a>
+    <nav class="main-nav">
+      <a href="articles/index.html">Reading Lists</a>
+      <a href="https://www.amazon.com/s?k=Eric+Coste+books&tag=ericcoste-20" target="_blank" rel="noopener">Shop on Amazon</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">30-Second Guide</span>
+    <h1>Which book is right for you?</h1>
+    <p class="lede">Two quick questions, one honest recommendation.</p>
+  </section>
+
+  <div id="q1" class="q active card">
+    <h3>What's actually on your mind right now?</h3>
+    <button class="choice" data-track="mindset">Why I keep making the same money mistakes, no matter how much I earn</button>
+    <button class="choice" data-track="income">How to actually make extra income using AI, starting soon</button>
+  </div>
+
+  <div id="q2-mindset" class="q card">
+    <h3>Do you want frameworks to think differently, or a workbook to act differently?</h3>
+    <button class="choice" data-result="hidden-laws">Both. I want the shift in thinking AND the exercises</button>
+    <button class="choice" data-result="hidden-laws">Mostly the thinking. I'll figure out the actions myself</button>
+  </div>
+
+  <div id="q2-income" class="q card">
+    <h3>Do you have any audience, portfolio, or coding background?</h3>
+    <button class="choice" data-result="ai-money">No to all three, I'm starting from zero</button>
+    <button class="choice" data-result="ai-money">I have a little experience but want a clear plan anyway</button>
+  </div>
+
+  <div id="result" class="card">
+    <span class="eyebrow" id="result-eyebrow"></span>
+    <h2 id="result-title"></h2>
+    <p id="result-body"></p>
+    <a id="result-link" href="#" class="btn solid">See the Book &rarr;</a>
+    <p style="margin-top:20px;"><a href="which-book.html" onclick="location.reload(); return false;">Start Over</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="yr"></span> Eric Coste. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('#q1 .choice').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.getElementById('q1').classList.remove('active');
+      var track = btn.getAttribute('data-track');
+      document.getElementById('q2-' + track).classList.add('active');
+    });
+  });
+
+  var results = {
+    'hidden-laws': {
+      eyebrow: 'Your Match',
+      title: 'The Hidden Laws of Money',
+      body: "You're not looking for another income tactic, you're looking for why the tactics haven't stuck. Start with the ten laws, then use the free companion workbook to apply them to your own situation.",
+      link: 'books/hidden-laws-of-money.html'
+    },
+    'ai-money': {
+      eyebrow: 'Your Match',
+      title: "AI Is Making People Money. Here's How.",
+      body: "You want a concrete plan, not more theory. This book gives you 8 income models, copy-paste scripts, and a 30-day plan built for exactly your starting point.",
+      link: 'books/ai-is-making-people-money.html'
+    }
+  };
+
+  document.querySelectorAll('.q .choice[data-result]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.q').forEach(function(q) { q.style.display = 'none'; });
+      var r = results[btn.getAttribute('data-result')];
+      document.getElementById('result-eyebrow').textContent = r.eyebrow;
+      document.getElementById('result-title').textContent = r.title;
+      document.getElementById('result-body').textContent = r.body;
+      document.getElementById('result-link').href = r.link;
+      document.getElementById('result').style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
