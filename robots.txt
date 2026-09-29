@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://booksbyericcoste.com/sitemap.xml
+Sitemap: https://books.ericcoste.com/sitemap.xml
